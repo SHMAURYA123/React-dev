@@ -20,14 +20,14 @@ const Header=()=>{
   </div>
   </div>
 )};
-
-const RestaurantCard=(props) =>{
+//
+const RestaurantCard=({resName,cuisines}) =>{
   return (
     <div className="res-cards">
        <img className="res-logo" 
       alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/rwks2yva4dbppsekgw6a"/>
-      <h1>{props.resName}</h1>
-      <h3>{props.cuisines}</h3>
+      <h1>{resName}</h1>
+      <h3>{cuisines}</h3>
       <h4>4.5 stars</h4>
       <h5>25 minutes</h5>
     </div>
