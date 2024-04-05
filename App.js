@@ -1,4 +1,5 @@
-
+// how we make the card dynamically by using the props
+//props->  javascript argument passing in function
 
 import React from "react";
 import ReactDOM  from "react-dom/client";
@@ -20,13 +21,13 @@ const Header=()=>{
   </div>
 )};
 
-const RestaurantCard=() =>{
+const RestaurantCard=(props) =>{
   return (
     <div className="res-cards">
        <img className="res-logo" 
       alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/rwks2yva4dbppsekgw6a"/>
-      <h1>Bikanervala</h1>
-      <h3>North Indian</h3>
+      <h1>{props.resName}</h1>
+      <h3>{props.cuisines}</h3>
       <h4>4.5 stars</h4>
       <h5>25 minutes</h5>
     </div>
@@ -38,21 +39,9 @@ const Body=()=>{
     <div className="body">
       <div className="Search">Search</div>
       <div className="res-container">
-       <RestaurantCard/>
-       <RestaurantCard/>
-       <RestaurantCard/>
-       <RestaurantCard/>
-       <RestaurantCard/>
-       <RestaurantCard/>
-       <RestaurantCard/>
-       <RestaurantCard/>
-       <RestaurantCard/>
-       <RestaurantCard/>
-       <RestaurantCard/>
-       <RestaurantCard/>
-       <RestaurantCard/>
-       <RestaurantCard/>
-       <RestaurantCard/>
+       <RestaurantCard resName="Bikanerwala" cuisines="North Indian"/>
+       <RestaurantCard resName="Domino's Pizza" cuisines="Pizzas,Italian"/>
+      
       </div>
     </div>
   )
