@@ -1,11 +1,11 @@
  import RestaurantCard from "./RestaurantCard";
- import resList from "../utility/mockdata";
+import Shimmer from "./shimmer";
  import { useEffect, useState } from "react";
- import resList from "../utility/mockdata";
+ 
  
  
  const Body=()=>{
-    const[listOfRestaurant,setListOfRestaurant]=useState(resList);
+    const[listOfRestaurant,setListOfRestaurant]=useState([]);
      
     useEffect(()=>{
      fetchData();
@@ -22,8 +22,12 @@
 
          console.log(json);
          //optional chaining
-        setListOfRestaurant(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
+        setListOfRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         };
+
+        if(listOfRestaurant.length===0){
+          return <Shimmer/>;
+        }
        
         return (
             <div className="body">
@@ -32,7 +36,7 @@
                   className="filter-btn"
                   onClick={() => {
                     const filteredList = listOfRestaurant.filter(
-                      (res) => res.info.avgRating > 4.4
+                      (res) => res.info.avgRating > 4.3
                     );
                     setListOfRestaurant(filteredList);
                   }}
