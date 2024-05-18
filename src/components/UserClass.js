@@ -11,11 +11,20 @@ class UserClass extends React.Component{
             count3:2,
             count4:3,
         };
+        console.log("Child constructor called");
+    }
+
+    componentDidMount(){ 
+         // component did mount used API call 
+        console.log("Child constructor Did Mount");
     }
     
     render(){
         const {name,location}=this.props;
         const{count,count2,count3,count4}=this.state;
+
+        console.log("child render");
+        
         return (
             <div className="user-card">
              <h1>Count={count}</h1>
