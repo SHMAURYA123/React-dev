@@ -17,10 +17,21 @@ import React from "react";
         <div>
             <h1>About Us</h1>
             <h2>This is Namaste React</h2>
-           <UserClass name={"Sourabh Maurya (class)"} location={"Molarband"}/>
+           <UserClass name={"First"} location={"Molarband"}/>
+           <UserClass name={"Second"} location={"Badarpur"}/>
         </div>
     );
    }
  }
+
+//  -parent constructor
+//  -parent render
+//  -first Child constructor called
+//  -first child render
+//  -Second constructor called
+//  -Second render
+// -FirstChild constructor Did Mount
+// -SecondChild constructor Did Mount
+// -Parent constructor Did Mount
  
  export default About;
