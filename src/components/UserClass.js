@@ -6,41 +6,35 @@ class UserClass extends React.Component{
         super(props);
       
         this.state={
-            count:0,
-            count2:1,
-            count3:2,
-            count4:3,
+            userInfo:{
+                name:"Dummy",
+                location:"Default",
+            }
+            
         };
-        console.log(this.props.name+"Child constructor called");
+        // console.log(this.props.name+"Child constructor called");
     }
 
-    componentDidMount(){ 
+  async  componentDidMount(){ 
          // component did mount used API call 
-        console.log(this.props.name+"Child constructor Did Mount");
+        // console.log(this.props.name+"Child constructor Did Mount");
+       const data=await fetch("https://api.github.com/users/shmaurya123");
+        const json=await data.json();
+      this.setState({
+        userInfo:json,
+      });
+        console.log(json);
     }
     
     render(){
-        const {name,location}=this.props;
-        const{count,count2,count3,count4}=this.state;
+        const {name,location,avatar_url}=this.state.userInfo;;
+        
 
-        console.log(this.props.name+"child render");
+        // console.log(this.props.name+"child render");
         
         return (
             <div className="user-card">
-             <h1>Count={count}</h1>
-             <h1>Count2={count2}</h1>
-             <h1>Count3={count3}</h1>
-             <h1>Count4={count4}</h1>
-            <button
-            //  Never update state variable directly
-             onClick={()=>{
-                this.setState({
-                    count:this.state.count+1,
-                    count2:this.state.count2+1,
-              });
-            }}> 
-             Count Increase
-             </button>
+             <img src={avatar_url}/>
              <h2>Name:{name} </h2>
              <h3>Location:{location}</h3>
              <h4> Contact:@shmaurya123</h4>
