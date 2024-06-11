@@ -20,7 +20,7 @@ const Body = () => {
 
     const json = await data.json();
 
-    console.log(json);
+    // console.log(json,listOfRestaurant);
     //optional chaining
     setListOfRestaurant(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -39,27 +39,27 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex  ">
+        <div className="search  m-4 p-4 " >
           <input
             type="text"
-            className="search-box"
+            className="border border-solid border-black "
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
         />
 
-          <button className="search-btn"  onClick={()=>{
+          <button className="px-2  bg-green-400 m-2 rounded-md"  onClick={()=>{
             const filteredList=listOfRestaurant.filter(
               (res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase())
             );
             setFilteredList(filteredList); 
           }}>Search</button>
         </div>
-
+        <div className=" m-4 p-4 flex items-center rounded-md ">
         <button
-          className="filter-btn"
+          className="px-4 py-2 bg-gray-100"
           onClick={() => {
             const filteredList = listOfRestaurant.filter(
               (res) => res.info.avgRating > 4.3
@@ -69,8 +69,10 @@ const Body = () => {
         >
           Top Rated Restaurant
         </button>
+        </div>
+        
       </div>
-      <div className="res-container">
+      <div className=" flex flex-wrap ">
         {filteredList.map((restaurant) => (
           <Link key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}><RestaurantCard resData={restaurant} /></Link>
         ))}
