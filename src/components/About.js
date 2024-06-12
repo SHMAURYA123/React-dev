@@ -1,3 +1,4 @@
+import UserContext from "../utility/UserContext";
 import User from "./User";
 import UserClass from "./UserClass";
 import React from "react";
@@ -17,7 +18,14 @@ import React from "react";
         <div>
             <h1>About Us</h1>
             <h2>This is Namaste React</h2>
-           
+           <div>
+            loggedInUser
+            <UserContext.Consumer>
+                {({loggedInUser})=>(
+                    <h1 className="text-xl font-bold">{loggedInUser}</h1>
+                )}
+            </UserContext.Consumer>
+           </div>
            <UserClass name={"Second"} location={"Badarpur"}/>
         </div>
     );

@@ -33,7 +33,9 @@ const RestaurantMenu=()=>{
         <p className="font-bold text-lg">
            {cuisines.join(",")} - {costForTwoMessage} 
         </p>
+        
         {categories.map((category,index)=>(
+         //controlled component
          <RestaurantCategory 
          key={category?.card?.card?.title} 
          data={category?.card?.card}
